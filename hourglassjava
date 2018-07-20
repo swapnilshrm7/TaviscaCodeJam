@@ -1,0 +1,73 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the hourglassSum function below.
+    static int hourglassSum(int[][] arr) 
+        {
+        int size,index1,index2=0,maximum=-9999,sum=0;
+        //System.out.println("Enter matrix size :");
+       // Scanner scan=new Scanner(System.in);
+        size=arr.length;
+        System.out.println(size);
+        /*int[][] matrix = new int[size][size];
+        for(index1=0;index1<=size-1;index1++)
+                {
+                for(index2=0;index2<=size-1;index2++)
+                    {
+                    matrix[index1][index2]=scan.nextInt();
+                    System.out.print(" "+matrix[index1][index2]);
+                    }
+                System.out.println();
+                }*/
+        int[][] matrix = new int[size][size];
+        matrix = arr;
+            sum=0;
+            for(index1=0;index1<=size-3;index1++)
+                {
+                for(index2=0;index2<=size-3;index2++)
+                    {
+                    sum=matrix[index1][index2]+matrix[index1][index2+1]+matrix[index1][index2+2]+matrix[index1+1][index2+1]+matrix[index1+2][index2]+matrix[index1+2][index2+1]+matrix[index1+2][index2+2];
+                    if(sum>maximum)
+                    {
+                    maximum=sum;
+                    }
+                    }
+                }
+       // System.out.println(maximum);
+    
+    return maximum;
+        }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int[][] arr = new int[6][6];
+
+        for (int i = 0; i < 6; i++) {
+            String[] arrRowItems = scanner.nextLine().split(" ");
+            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+            for (int j = 0; j < 6; j++) {
+                int arrItem = Integer.parseInt(arrRowItems[j]);
+                arr[i][j] = arrItem;
+            }
+        }
+
+        int result = hourglassSum(arr);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }}
