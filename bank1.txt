@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+    {
+    class CustomerDetails
+        {
+        public String Name;
+        public int Account_ID=0,Amount_Savings=0,Amount_Current=0,Amount_DMAT=0,Age=0;
+        public CustomerDetails(int Count)
+            {
+            Console.WriteLine("Enter name :");
+            Name=Console.ReadLine();
+            Account_ID = 1000 + Count;
+            Console.WriteLine("Enter saving account's balance :");
+            Amount_Savings= Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter current account's balance :");
+            Amount_Current= Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter DMAT account's balance  :");
+            Amount_DMAT= Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Age :");
+            Age= Convert.ToInt32(Console.ReadLine());
+            }
+        }
+    }
