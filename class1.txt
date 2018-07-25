@@ -25,7 +25,7 @@ namespace ConsoleApp4
                 Qualification = Console.ReadLine();
                 if (String.IsNullOrEmpty(Qualification))
                     {
-                    Console.WriteLine("Qualification can’t be empty");
+                    Console.WriteLine("Qualification canâ€™t be empty");
                     throw new ArgumentException("user attempted to keep a field empty!");
                     }
                 ID = ID + count;
@@ -75,7 +75,7 @@ namespace ConsoleApp4
             }
             finally
             {
-                Console.WriteLine("-------Tavisca Solutions Private LTD---------");
+                Console.WriteLine("\n-------Tavisca Solutions Private LTD---------\n\n");
             }
             }
         }
