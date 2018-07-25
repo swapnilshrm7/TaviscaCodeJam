@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+    {
+    public class Class1
+        {
+        internal int ID=1000, Salary,check=0;
+        String Name,Qualification,Department,FilePath="C:\\Log.txt";
+        public Class1(int count)
+            {
+            try
+                {
+                Console.WriteLine("enter name :");
+                Name = Console.ReadLine();
+                if (String.IsNullOrEmpty(Name))
+                    {
+                    throw new ArgumentException("user attempted to keep a field empty!");
+                    }
+                Console.WriteLine("\nenter Qualification :");
+                Qualification = Console.ReadLine();
+                if (String.IsNullOrEmpty(Qualification))
+                    {
+                    Console.WriteLine("Qualification can’t be empty");
+                    throw new ArgumentException("user attempted to keep a field empty!");
+                    }
+                ID = ID + count;
+                Console.WriteLine("\nenter salary :");
+                Salary = Convert.ToInt32(Console.ReadLine());
+                if ((Qualification == "BE") || (Qualification == "BCA") || (Qualification == "BSC"))
+                    {
+                    Department = "IT";
+                    Console.WriteLine("\nEmployee added under IT department.");
+                    }
+                else if ((Qualification == "BCom") || (Qualification == "MCom") || (Qualification == "CA"))
+                    {
+                    Department = "Accounts";
+                    Console.WriteLine("\nEmployee added under accounts department.");
+                    }
+                else
+                    {
+                    throw new WrongInputException(string.Format("User tried to enter Invalid Qualification!"));
+                    }
+                check = 1;
+                }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("This field cannot be empty");
+                //log this
+                using (StreamWriter writer = new StreamWriter(FilePath, true))
+                {
+                    writer.WriteLine("Message :" + ex.Message + " " + Environment.NewLine + "StackTrace :" + ex.StackTrace + " " + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                }
+            }
+            catch (WrongInputException ex2)
+            {
+                Console.WriteLine("Invalid Qualification");
+                using (StreamWriter writer = new StreamWriter(FilePath, true))
+                {
+                    writer.WriteLine("Message :" + ex2.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex2.StackTrace + " " + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                }
+            }
+            catch (Exception ex1)
+            {
+                Console.WriteLine("invalid entry!");
+                //log this
+                using (StreamWriter writer = new StreamWriter(FilePath, true))
+                {
+                    writer.WriteLine("Message :" + ex1.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex1.StackTrace + " " + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                }
+            }
+            finally
+            {
+                Console.WriteLine("-------Tavisca Solutions Private LTD---------");
+            }
+            }
+        }
+    }
